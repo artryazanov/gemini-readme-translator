@@ -16,7 +16,7 @@ jobs:
 
       - name: Gemini README Translator
         id: translator
-        uses: thegamerbay/gemini-readme-translator@v1
+        uses: artryazanov/gemini-readme-translator@v1
         with:
           api_key: ${{ secrets.GEMINI_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}

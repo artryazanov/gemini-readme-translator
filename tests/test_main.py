@@ -100,3 +100,70 @@ def test_main_missing_languages(mock_exit, monkeypatch):
         main.main()
     
     mock_exit.assert_called_once_with(1)
+
+@patch("main.genai.Client")
+def test_main_default_menu_style(mock_client_class, mock_env, monkeypatch):
+    monkeypatch.delenv("INPUT_MENU_STYLE", raising=False)
+    mock_client = MagicMock()
+    mock_client_class.return_value = mock_client
+    
+    def fake_generate_content(model, contents):
+        response = MagicMock()
+        response.usage_metadata.prompt_token_count = 10
+        response.usage_metadata.candidates_token_count = 20
+        response.usage_metadata.total_token_count = 30
+        
+        if "expert markdown formatter" in contents:
+            assert "[English]" in contents
+            assert "[Русский]" in contents
+            assert "[中文]" in contents
+            response.text = "FAKE MENU\n# Hello World"
+        else:
+            response.text = "TRANSLATED"
+        return response
+    
+    mock_client.models.generate_content.side_effect = fake_generate_content
+    main.main()
+
+@patch("main.genai.Client")
+def test_main_no_menu_generation(mock_client_class, mock_env, monkeypatch):
+    monkeypatch.setenv("INPUT_ADD_LANGUAGE_MENU", "false")
+    mock_client = MagicMock()
+    mock_client_class.return_value = mock_client
+    
+    def fake_generate_content(model, contents):
+        response = MagicMock()
+        response.usage_metadata.prompt_token_count = 10
+        response.usage_metadata.candidates_token_count = 20
+        response.usage_metadata.total_token_count = 30
+        response.text = "NO MENU # Hola"
+        return response
+    
+    mock_client.models.generate_content.side_effect = fake_generate_content
+    main.main()
+    
+    updated_source = mock_env["source_file"].read_text(encoding="utf-8")
+    assert "FAKE MENU" not in updated_source
+
+@patch("main.genai.Client")
+def test_main_translation_error(mock_client_class, mock_env):
+    mock_client = MagicMock()
+    mock_client_class.return_value = mock_client
+    
+    def fake_generate_content(model, contents):
+        if "expert markdown formatter" in contents:
+            response = MagicMock()
+            response.usage_metadata.prompt_token_count = 10
+            response.usage_metadata.candidates_token_count = 20
+            response.usage_metadata.total_token_count = 30
+            response.text = "OK"
+            return response
+        else:
+            raise Exception("API Error")
+            
+    mock_client.models.generate_content.side_effect = fake_generate_content
+    
+    main.main()
+    
+    ru_file = mock_env["tmp_path"] / "README.ru.md"
+    assert not ru_file.exists()

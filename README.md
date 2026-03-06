@@ -1,7 +1,7 @@
 # Gemini README Translator
 
-[![CI Pipeline](https://github.com/thegamerbay/gemini-readme-translator/actions/workflows/ci.yml/badge.svg)](https://github.com/thegamerbay/gemini-readme-translator/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/thegamerbay/gemini-readme-translator/graph/badge.svg)](https://codecov.io/gh/thegamerbay/gemini-readme-translator)
+[![CI Pipeline](https://github.com/artryazanov/gemini-readme-translator/actions/workflows/ci.yml/badge.svg)](https://github.com/artryazanov/gemini-readme-translator/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/artryazanov/gemini-readme-translator/graph/badge.svg)](https://codecov.io/gh/artryazanov/gemini-readme-translator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 A GitHub Action that automatically translates your `README.md` into multiple languages using the Gemini API. It intelligently injects a cross-linked language navigation menu into all files and can either commit changes directly or create a Pull Request for review.
@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Gemini README Translator
-        uses: thegamerbay/gemini-readme-translator@v1
+        uses: artryazanov/gemini-readme-translator@v1
         with:
           api_key: ${{ secrets.GEMINI_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -87,4 +87,4 @@ This action uses the built-in `GITHUB_TOKEN` to push commits or create Pull Requ
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/thegamerbay/gemini-readme-translator/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/artryazanov/gemini-readme-translator/blob/main/LICENSE) file for details.
