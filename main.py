@@ -125,7 +125,24 @@ def main():
         target_file = target_files[lang]
         print(f"Translating to {lang} -> {target_file}...")
 
-        menu_rule = "1. Find the language navigation menu in the text and keep the menu items, links, and structure exactly as they appear in the original text. Do not translate the language names in the menu." if add_language_menu else "1. Do not generate or add any language navigation menus."
+        if add_language_menu:
+            # Calculate relative path from target file's directory
+            target_dir = os.path.dirname(target_file)
+            
+            def get_rel_path(filepath):
+                if not target_dir:
+                    return filepath
+                return os.path.relpath(filepath, target_dir)
+            
+            links_text = f"English -> {get_rel_path(source_file)}\n"
+            for t_lang in target_langs:
+                links_text += f"        {t_lang} -> {get_rel_path(target_files[t_lang])}\n"
+            
+            menu_rule = f"""1. Find the language navigation menu. You MUST update its links to be relative to this translated file's directory.
+        Use EXACTLY these relative links in the menu:
+        {links_text}        Keep the menu structure and language names exactly as they appear in the original text. Do not translate the language names in the menu."""
+        else:
+            menu_rule = "1. Do not generate or add any language navigation menus."
 
         prompt_translate = f"""
         You are an expert technical translator. Translate the following README markdown content into {lang}.
