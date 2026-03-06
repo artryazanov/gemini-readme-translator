@@ -90,6 +90,7 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         INPUT_COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        INPUT_OUTPUT_DIR: ${{ inputs.output_dir }}
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
