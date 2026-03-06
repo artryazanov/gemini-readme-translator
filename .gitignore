@@ -1,0 +1,23 @@
+# IDEs / Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+__pycache__/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Python
+*.pyc
+venv/
+env/
+.env
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/

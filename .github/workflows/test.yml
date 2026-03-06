@@ -1,0 +1,87 @@
+name: E2E and Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - 'README.*.md'
+      - 'LICENSE'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements-dev.txt
+
+      - name: Run Unit Tests
+        run: |
+          pytest --cov=./ --cov-report=xml tests/ -v
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: thegamerbay/gemini-readme-translator
+
+      - name: Create Test Input README
+        run: |
+          echo "# Gemini Test Action" > README.md
+          echo "This is a quick test to verify the E2E pipeline for translation." >> README.md
+
+      - name: Run E2E Test (Gemini README Translator)
+        id: translator
+        uses: ./
+        with:
+          api_key: ${{ secrets.GEMINI_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          languages: 'ru, es'
+          add_language_menu: 'true'
+          create_pr: 'false'
+          model: 'gemini-3.1-pro-preview'
+
+      - name: Verify Results
+        run: |
+          echo "Checking generated files..."
+          
+          if [ ! -f "README.ru.md" ]; then
+            echo "::error::README.ru.md not found!"
+            exit 1
+          fi
+          
+          if [ ! -f "README.es.md" ]; then
+            echo "::error::README.es.md not found!"
+            exit 1
+          fi
+          
+          echo "Files exist. Checking content..."
+          cat README.ru.md
+          
+          echo "\nChecking GitHub output variables..."
+          echo "Duration: ${{ steps.translator.outputs.duration_seconds }} s"
+          echo "Total Tokens: ${{ steps.translator.outputs.total_tokens_used }}"
+          
+          if [ -z "${{ steps.translator.outputs.total_tokens_used }}" ]; then
+            echo "::error::total_tokens_used is empty!"
+            exit 1
+          fi
+          if [ "${{ steps.translator.outputs.total_tokens_used }}" -eq "0" ]; then
+            echo "::error::total_tokens_used is 0, which suggests API call failed or stats weren't parsed."
+            exit 1
+          fi

@@ -1,0 +1,38 @@
+name: Update Major Tag
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  update-major-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Update major tag
+        run: |
+          # Get the full version tag, e.g. v1.2.3
+          VERSION="${{ github.ref_name }}"
+          # Extract major version, e.g. v1
+          MAJOR="${VERSION%%.*}"
+          
+          echo "Updating major tag $MAJOR to point to $VERSION..."
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Delete local major tag if exists
+          git tag -d "$MAJOR" || true
+          
+          # Delete remote major tag if exists
+          git push origin ":refs/tags/$MAJOR" || true
+          
+          # Create new major tag and push
+          git tag "$MAJOR" "$VERSION"
+          git push origin "$MAJOR"

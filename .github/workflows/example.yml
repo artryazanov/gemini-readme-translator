@@ -1,0 +1,35 @@
+name: Translate README
+
+on:
+  push:
+    paths:
+      - 'README.md'
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to commit changes back
+      pull-requests: write # Needed if create_pr is 'true'
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Gemini README Translator
+        id: translator
+        uses: thegamerbay/gemini-readme-translator@v1
+        with:
+          api_key: ${{ secrets.GEMINI_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          languages: 'ru, zh-CN'
+          create_pr: 'true'
+          model: 'gemini-3.1-pro-preview'
+
+      - name: Print Translation Stats
+        run: |
+          echo "Process took ${{ steps.translator.outputs.duration_seconds }} seconds."
+          echo "Total tokens used: ${{ steps.translator.outputs.total_tokens_used }}"
