@@ -19,7 +19,7 @@ jobs:
         with:
           api_key: ${{ secrets.GEMINI_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          languages: 'en, ru, th, zh-CN, zh-TW, hi, es, fr, ar, bn, pt, ur, id, de, ja, mr, te, tr, ta, vi, ko, sw, it, gu, fa, kn, pl, ml, uk, ro, nl, el, hu, sv, cs, sr, he, bg, da, fi, no, sk, hr, lt, sl, lv, et'
+          languages: 'ru, th, zh-CN, zh-TW, hi, es, fr, ar, bn, pt, ur, id, de, ja, mr, te, tr, ta, vi, ko, sw, it, gu, fa, kn, pl, ml, uk, ro, nl, el, hu, sv, cs, sr, he, bg, da, fi, no, sk, hr, lt, sl, lv, et'
           output_dir: 'translations'
           model: 'gemini-3.1-pro-preview'
 
