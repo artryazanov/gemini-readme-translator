@@ -42,7 +42,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: thegamerbay/gemini-readme-translator
+          slug: artryazanov/gemini-readme-translator
 
       - name: Create Test Input README
         run: |
