@@ -35,7 +35,7 @@ def main():
     add_language_menu = os.environ.get("INPUT_ADD_LANGUAGE_MENU", "true").lower() == "true"
     menu_style = os.environ.get("INPUT_MENU_STYLE", "> 🌐 **Languages:** [English](README.md) | [Русский](README.ru.md) | [中文](README.zh-CN.md)")
 
-    target_langs = [l.strip() for l in languages_input.split(",") if l.strip()]
+    target_langs = [lang.strip() for lang in languages_input.split(",") if lang.strip()]
     if not target_langs:
         print("Error: No target languages specified.")
         sys.exit(1)
@@ -52,7 +52,7 @@ def main():
     with open(source_file, "r", encoding="utf-8") as f:
         original_content = f.read()
 
-    expected_menu_md = ""
+
     content_to_translate = original_content
 
     # 1. Handle Language Menu Generation (if enabled)

@@ -1,6 +1,6 @@
-# Gemini README Translator Action
+# Gemini README Translator
 
-[![E2E and Unit Tests](https://github.com/thegamerbay/gemini-readme-translator/actions/workflows/test.yml/badge.svg)](https://github.com/thegamerbay/gemini-readme-translator/actions/workflows/test.yml)
+[![CI Pipeline](https://github.com/thegamerbay/gemini-readme-translator/actions/workflows/ci.yml/badge.svg)](https://github.com/thegamerbay/gemini-readme-translator/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/thegamerbay/gemini-readme-translator/graph/badge.svg)](https://codecov.io/gh/thegamerbay/gemini-readme-translator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
