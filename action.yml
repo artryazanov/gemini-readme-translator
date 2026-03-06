@@ -43,6 +43,10 @@ inputs:
     description: "Source markdown file"
     required: false
     default: "README.md"
+  output_dir:
+    description: "Directory to save translated files (default is the same directory as the source file)"
+    required: false
+    default: ""
 
 outputs:
   total_tokens_used:
@@ -78,6 +82,7 @@ runs:
         INPUT_LANGUAGES: ${{ inputs.languages }}
         INPUT_MODEL: ${{ inputs.model }}
         INPUT_SOURCE_FILE: ${{ inputs.source_file }}
+        INPUT_OUTPUT_DIR: ${{ inputs.output_dir }}
         INPUT_ADD_LANGUAGE_MENU: ${{ inputs.add_language_menu }}
         INPUT_MENU_STYLE: ${{ inputs.menu_style }}
       run: python ${{ github.action_path }}/main.py
@@ -93,6 +98,9 @@ runs:
         git config user.email "github-actions[bot]@users.noreply.github.com"
         
         git add README*.md
+        if [[ -n "${INPUT_OUTPUT_DIR}" ]]; then
+          git add "${INPUT_OUTPUT_DIR}"/*.md
+        fi
         
         if [[ -z $(git status -s) ]]; then
           echo "No changes detected. README files are already up to date."

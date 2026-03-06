@@ -34,11 +34,29 @@ def main():
     source_file = os.environ.get("INPUT_SOURCE_FILE", "README.md")
     add_language_menu = os.environ.get("INPUT_ADD_LANGUAGE_MENU", "true").lower() == "true"
     menu_style = os.environ.get("INPUT_MENU_STYLE", "> 🌐 **Languages:** [English](README.md) | [Русский](README.ru.md) | [中文](README.zh-CN.md)")
+    output_dir = os.environ.get("INPUT_OUTPUT_DIR", "").strip()
 
     target_langs = [lang.strip() for lang in languages_input.split(",") if lang.strip()]
     if not target_langs:
         print("Error: No target languages specified.")
         sys.exit(1)
+
+    target_files = {}
+    for lang in target_langs:
+        base_name_only = os.path.splitext(os.path.basename(source_file))[0]
+        ext = os.path.splitext(source_file)[1]
+        if output_dir:
+            target_files[lang] = os.path.join(output_dir, f"{base_name_only}.{lang}{ext}")
+        else:
+            base_name = os.path.splitext(source_file)[0]
+            target_files[lang] = f"{base_name}.{lang}{ext}"
+            
+    if output_dir and not os.path.exists(output_dir):
+        try:
+            os.makedirs(output_dir, exist_ok=True)
+        except Exception as e:
+            print(f"Error creating output directory: {e}")
+            sys.exit(1)
 
     client = genai.Client(api_key=api_key)
 
@@ -59,9 +77,7 @@ def main():
     if add_language_menu:
         required_links_text = f"English -> {source_file}\n"
         for lang in target_langs:
-            base_name, ext = os.path.splitext(source_file)
-            file_name = f"{base_name}.{lang}{ext}"
-            required_links_text += f"{lang} -> {file_name}\n"
+            required_links_text += f"{lang} -> {target_files[lang]}\n"
         
         print(f"Updating original {source_file} to ensure correct language menu...")
         prompt_original = f"""
@@ -106,8 +122,7 @@ def main():
 
     # 2. Translate to target languages
     for lang in target_langs:
-        base_name, ext = os.path.splitext(source_file)
-        target_file = f"{base_name}.{lang}{ext}"
+        target_file = target_files[lang]
         print(f"Translating to {lang} -> {target_file}...")
 
         menu_rule = "1. Find the language navigation menu in the text and keep the menu items, links, and structure exactly as they appear in the original text. Do not translate the language names in the menu." if add_language_menu else "1. Do not generate or add any language navigation menus."

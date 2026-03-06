@@ -55,6 +55,7 @@ jobs:
 | `api_key` | Yes |  | Your Google Gemini API Key. |
 | `github_token` | Yes |  | Standard GitHub token (`${{ secrets.GITHUB_TOKEN }}`). |
 | `languages` | Yes |  | Comma-separated target languages (e.g. `ru, es`). |
+| `output_dir` | No | | Directory to save translated files. Defaults to source file's directory. |
 | `add_language_menu` | No | `true` | Set to `false` to disable auto-generation of the language menu. |
 | `menu_style` | No | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | The reference style AI uses when generating a new language menu. |
 | `create_pr` | No | `false` | If `true`, creates a PR instead of a direct commit. |

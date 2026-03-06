@@ -167,3 +167,33 @@ def test_main_translation_error(mock_client_class, mock_env):
     
     ru_file = mock_env["tmp_path"] / "README.ru.md"
     assert not ru_file.exists()
+
+@patch("main.genai.Client")
+def test_main_with_output_dir(mock_client_class, mock_env, monkeypatch):
+    custom_out = mock_env["tmp_path"] / "translations"
+    monkeypatch.setenv("INPUT_OUTPUT_DIR", str(custom_out))
+    
+    mock_client = MagicMock()
+    mock_client_class.return_value = mock_client
+    
+    def fake_generate_content(model, contents):
+        r = MagicMock()
+        r.usage_metadata.prompt_token_count = 10
+        r.usage_metadata.candidates_token_count = 20
+        r.usage_metadata.total_token_count = 30
+        r.text = "# FAKE TRANSLATION"
+        return r
+        
+    mock_client.models.generate_content.side_effect = fake_generate_content
+    
+    main.main()
+    
+    assert custom_out.exists()
+    assert custom_out.is_dir()
+    
+    # Verify translated files are in the custom directory
+    assert (custom_out / "README.ru.md").exists()
+    assert (custom_out / "README.es.md").exists()
+    
+    # Original file shouldn't be moved, only its links updated (checked in other tests)
+    assert mock_env["source_file"].exists()
