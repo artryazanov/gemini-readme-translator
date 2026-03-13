@@ -38,7 +38,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Gemini README Translator
         uses: artryazanov/gemini-readme-translator@v1
