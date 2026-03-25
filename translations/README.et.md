@@ -69,6 +69,7 @@ jobs:
 | `languages` | Jah |  | Komadega eraldatud sihtkeeled (nt `ru, es`). |
 | `output_dir` | Ei | | Kataloog, kuhu salvestatakse tõlgitud failid. Vaikimisi on see lähtefaili kataloog. |
 | `add_language_menu` | Ei | `true` | Määra `false`, et keelata keelemenüü automaatne genereerimine. |
+| `use_absolute_links`| Ei | `true` | Määrake `false`, et kasutada suhtelisi linke absoluutsete GitHubi URLide asemel genereeritud keelemenüüdes. |
 | `menu_style` | Ei | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Võrdlusstiil, mida AI kasutab uue keelemenüü loomisel. |
 | `commit_message` | Ei | `docs: auto-translate README via Gemini` | Git'i sissekande (*commit*) sõnumis kasutatav tekst. |
 | `model` | Ei | `gemini-3.1-pro-preview` | Kasutatav Gemini mudel. |

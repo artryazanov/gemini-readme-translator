@@ -69,6 +69,7 @@ jobs:
 | `languages` | 예 |  | 쉼표로 구분된 대상 언어 (예: `ru, es`). |
 | `output_dir` | 아니요 | | 번역된 파일을 저장할 디렉토리. 기본값은 원본 파일의 디렉토리입니다. |
 | `add_language_menu` | 아니요 | `true` | 언어 메뉴의 자동 생성을 비활성화하려면 `false`로 설정하세요. |
+| `use_absolute_links`| 아니요 | `true` | 생성된 언어 메뉴에서 절대적인 GitHub URL 대신 상대 링크를 사용하려면 `false`로 설정하십시오. |
 | `menu_style` | 아니요 | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | 새로운 언어 메뉴를 생성할 때 AI가 참조하는 스타일. |
 | `commit_message` | 아니요 | `docs: auto-translate README via Gemini` | git 커밋 메시지에 사용되는 텍스트. |
 | `model` | 아니요 | `gemini-3.1-pro-preview` | 사용할 Gemini 모델. |

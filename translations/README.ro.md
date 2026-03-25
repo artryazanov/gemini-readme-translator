@@ -60,6 +60,7 @@ jobs:
 | `languages` | Da |  | Limbile țintă separate prin virgulă (de exemplu, `ru, es`). |
 | `output_dir` | Nu | | Directorul în care se salvează fișierele traduse. Implicit este directorul fișierului sursă. |
 | `add_language_menu` | Nu | `true` | Setați la `false` pentru a dezactiva generarea automată a meniului de limbă. |
+| `use_absolute_links`| Nu | `true` | Setați la `false` pentru a utiliza linkuri relative în loc de adrese URL absolute GitHub în meniurile de limbă generate. |
 | `menu_style` | Nu | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Stilul de referință pe care AI-ul îl folosește la generarea unui nou meniu de limbă. |
 | `commit_message` | Nu | `docs: auto-translate README via Gemini` | Textul folosit pentru mesajul de commit git. |
 | `model` | Nu | `gemini-3.1-pro-preview` | Modelul Gemini care va fi utilizat. |

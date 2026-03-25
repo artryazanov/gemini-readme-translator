@@ -69,6 +69,7 @@ jobs:
 | `languages` | Jā |  | Ar komatu atdalītas mērķa valodas (piemēram, `ru, es`). |
 | `output_dir` | Nē | | Direktorija, kur saglabāt iztulkotus failus. Pēc noklusējuma izmanto avota faila direktoriju. |
 | `add_language_menu` | Nē | `true` | Iestatiet uz `false`, lai atspējotu automātisko valodas izvēlnes ģenerēšanu. |
+| `use_absolute_links`| Nē | `true` | Iestatiet uz `false`, lai ģenerētajās valodu izvēlnēs izmantotu relatīvās saites, nevis absolūtos GitHub URL. |
 | `menu_style` | Nē | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Atsauces stils, ko AI izmanto, ģenerējot jaunu valodu izvēlni. |
 | `commit_message` | Nē | `docs: auto-translate README via Gemini` | Teksts, ko izmanto git commit ziņojumam. |
 | `model` | Nē | `gemini-3.1-pro-preview` | Izmantojamais Gemini modelis. |

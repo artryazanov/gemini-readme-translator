@@ -69,6 +69,7 @@ jobs:
 | `languages` | 是 |  | 以逗号分隔的目标语言（例如：`ru, es`）。 |
 | `output_dir` | 否 | | 保存翻译后文件的目录。默认为源文件所在的目录。 |
 | `add_language_menu` | 否 | `true` | 设置为 `false` 以禁用语言菜单的自动生成。 |
+| `use_absolute_links`| 否 | `true` | 设置为 `false`，在生成的语言菜单中使用相对链接，而不是绝对的 GitHub URL。 |
 | `menu_style` | 否 | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | AI 在生成新语言菜单时使用的参考样式。 |
 | `commit_message` | 否 | `docs: auto-translate README via Gemini` | 用于 git 提交信息的文本。 |
 | `model` | 否 | `gemini-3.1-pro-preview` | 要使用的 Gemini 模型。 |

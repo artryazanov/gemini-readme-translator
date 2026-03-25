@@ -69,6 +69,7 @@ jobs:
 | `languages` | Áno |  | Cieľové jazyky oddelené čiarkou (napr. `ru, es`). |
 | `output_dir` | Nie | | Adresár na uloženie preložených súborov. Predvolene je to adresár zdrojového súboru. |
 | `add_language_menu` | Nie | `true` | Nastavte na `false` pre vypnutie automatického generovania jazykového menu. |
+| `use_absolute_links`| Nie | `true` | Nastavte na `false` pre použitie relatívnych odkazov namiesto absolútnych GitHub URL adresách vo vygenerovaných jazykových ponukách. |
 | `menu_style` | Nie | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Referenčný štýl, ktorý AI používa pri generovaní nového jazykového menu. |
 | `commit_message` | Nie | `docs: auto-translate README via Gemini` | Text použitý pre správu git commitu. |
 | `model` | Nie | `gemini-3.1-pro-preview` | Model Gemini, ktorý sa má použiť. |

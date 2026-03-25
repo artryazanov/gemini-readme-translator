@@ -69,6 +69,7 @@ jobs:
 | `languages` | Ja |  | Kommagescheiden doeltalen (bijv. `ru, es`). |
 | `output_dir` | Nee | | Map om vertaalde bestanden op te slaan. Standaard is dit de map van het bronbestand. |
 | `add_language_menu` | Nee | `true` | Stel in op `false` om het automatisch genereren van het taalmenu uit te schakelen. |
+| `use_absolute_links`| Nee | `true` | Stel in op `false` om relatieve links te gebruiken in plaats van absolute GitHub-URL's in de gegenereerde taalmenu's. |
 | `menu_style` | Nee | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | De referentiestijl die de AI gebruikt bij het genereren van een nieuw taalmenu. |
 | `commit_message` | Nee | `docs: auto-translate README via Gemini` | Tekst die wordt gebruikt voor de git commit-message. |
 | `model` | Nee | `gemini-3.1-pro-preview` | Het te gebruiken Gemini-model. |

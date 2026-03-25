@@ -69,6 +69,7 @@ jobs:
 | `languages` | Ano |  | Cílové jazyky oddělené čárkou (např. `ru, es`). |
 | `output_dir` | Ne | | Adresář pro uložení přeložených souborů. Výchozí je adresář zdrojového souboru. |
 | `add_language_menu` | Ne | `true` | Nastavte na `false` pro deaktivaci automatického generování jazykového menu. |
+| `use_absolute_links`| Ne | `true` | Nastavte na `false` pro použití relativních odkazů namísto absolutních URL z Githubu v generovaných nabídkách jazyků. |
 | `menu_style` | Ne | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Referenční styl, který AI použije při generování nového jazykového menu. |
 | `commit_message` | Ne | `docs: auto-translate README via Gemini` | Text použitý pro zprávu gitu při commitu. |
 | `model` | Ne | `gemini-3.1-pro-preview` | Model Gemini, který se má použít. |

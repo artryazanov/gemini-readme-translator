@@ -69,6 +69,7 @@ jobs:
 | `languages` | Da |  | Ciljani jezici odvojeni zarezom (npr. `ru, es`). |
 | `output_dir` | Ne | | Direktorij u koji se spremaju prevedene datoteke. Zadani direktorij je onaj izvorne datoteke. |
 | `add_language_menu` | Ne | `true` | Postavite na `false` kako biste onemogućili automatsko generiranje izbornika jezika. |
+| `use_absolute_links`| Ne | `true` | Postavite na `false` za upotrebu relativnih poveznica umjesto apsolutnih GitHub URL-ova u generiranim izbornicima jezika. |
 | `menu_style` | Ne | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Referentni stil koji AI koristi pri generiranju novog izbornika jezika. |
 | `commit_message` | Ne | `docs: auto-translate README via Gemini` | Tekst koji se koristi za git commit poruku. |
 | `model` | Ne | `gemini-3.1-pro-preview` | Model Gemini koji će se koristiti. |

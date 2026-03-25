@@ -69,6 +69,7 @@ jobs:
 | `languages` | Có |  | Các ngôn ngữ mục tiêu được phân tách bằng dấu phẩy (ví dụ: `ru, es`). |
 | `output_dir` | Không | | Thư mục lưu các tệp đã dịch. Mặc định là thư mục của tệp nguồn. |
 | `add_language_menu` | Không | `true` | Đặt thành `false` để tắt tính năng tự động tạo menu ngôn ngữ. |
+| `use_absolute_links`| Không | `true` | Đặt thành `false` để sử dụng các liên kết tương đối thay vì các URL GitHub tuyệt đối trong các menu ngôn ngữ được tạo. |
 | `menu_style` | Không | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Định dạng tham chiếu mà AI sử dụng khi tạo menu ngôn ngữ mới. |
 | `commit_message` | Không | `docs: auto-translate README via Gemini` | Văn bản được sử dụng cho tin nhắn git commit. |
 | `model` | Không | `gemini-3.1-pro-preview` | Mô hình Gemini cần sử dụng. |

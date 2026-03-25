@@ -22,6 +22,11 @@ def mock_env(monkeypatch, tmp_path):
     monkeypatch.setenv("INPUT_MENU_STYLE", "TEST STYLE")
     monkeypatch.setenv("GITHUB_OUTPUT", str(github_output))
     
+    monkeypatch.setenv("INPUT_USE_ABSOLUTE_LINKS", "true")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "artryazanov/gemini-readme-translator")
+    monkeypatch.setenv("GITHUB_REF_NAME", "main")
+    monkeypatch.setenv("GITHUB_SERVER_URL", "https://github.com")
+    
     return {
         "source_file": source_file,
         "github_output": github_output,
@@ -43,10 +48,13 @@ def test_main_success(mock_client_class, mock_env):
         
         # Determine if it's the menu generation prompt or translation prompt
         if "expert markdown formatter" in contents:
+            assert "https://github.com/artryazanov/gemini-readme-translator/blob/main/" in contents
             response.text = "FAKE MENU\n# Hello World\nThis is a test."
         elif "into ru" in contents:
+            assert "https://github.com/artryazanov/gemini-readme-translator/blob/main/" in contents
             response.text = "FAKE MENU\n# Привет мир\nЭто тест."
         else:
+            assert "https://github.com/artryazanov/gemini-readme-translator/blob/main/" in contents
             response.text = "FAKE MENU\n# Hola Mundo\nEsto es una prueba."
             
         return response
@@ -172,6 +180,7 @@ def test_main_translation_error(mock_client_class, mock_env):
 def test_main_with_output_dir(mock_client_class, mock_env, monkeypatch):
     custom_out = mock_env["tmp_path"] / "translations"
     monkeypatch.setenv("INPUT_OUTPUT_DIR", str(custom_out))
+    monkeypatch.setenv("INPUT_USE_ABSOLUTE_LINKS", "false")
     
     mock_client = MagicMock()
     mock_client_class.return_value = mock_client

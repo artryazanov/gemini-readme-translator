@@ -69,6 +69,7 @@ jobs:
 | `languages` | ใช่ |  | ภาษาเป้าหมายที่คั่นด้วยเครื่องหมายจุลภาค (เช่น `ru, es`) |
 | `output_dir` | ไม่ | | ไดเรกทอรีสำหรับบันทึกไฟล์ที่แปลแล้ว ค่าเริ่มต้นคือไดเรกทอรีของไฟล์ต้นฉบับ |
 | `add_language_menu` | ไม่ | `true` | ตั้งค่าเป็น `false` เพื่อปิดใช้งานการสร้างเมนูภาษาโดยอัตโนมัติ |
+| `use_absolute_links`| ไม่ | `true` | ตั้งค่าเป็น `false` เพื่อใช้ลิงก์สัมพัทธ์แทนที่ URL แบบเต็มของ GitHub ในเมนูภาษาที่สร้างขึ้น |
 | `menu_style` | ไม่ | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | สไตล์อ้างอิงที่ AI ใช้เมื่อสร้างเมนูภาษาใหม่ |
 | `commit_message` | ไม่ | `docs: auto-translate README via Gemini` | ข้อความที่ใช้สำหรับ git commit message |
 | `model` | ไม่ | `gemini-3.1-pro-preview` | โมเดล Gemini ที่จะใช้ |

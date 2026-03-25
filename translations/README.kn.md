@@ -69,6 +69,7 @@ jobs:
 | `languages` | ಹೌದು |  | ಅಲ್ಪವಿರಾಮದಿಂದ (comma) ಬೇರ್ಪಡಿಸಲಾದ ಗುರಿ ಭಾಷೆಗಳು (ಉದಾಹರಣೆಗೆ `ru, es`). |
 | `output_dir` | ಇಲ್ಲ | | ಅನುವಾದಿತ ಫೈಲ್‌ಗಳನ್ನು ಉಳಿಸುವ ಡೈರೆಕ್ಟರಿ. ಡೀಫಾಲ್ಟ್ ಆಗಿ ಮೂಲ ಫೈಲ್‌ನ ಡೈರೆಕ್ಟರಿಗೆ ಉಳಿಸುತ್ತದೆ. |
 | `add_language_menu` | ಇಲ್ಲ | `true` | ಭಾಷಾ ಮೆನುವಿನ ಸ್ವಯಂ-ರಚನೆಯನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲು `false` ಎಂದು ಹೊಂದಿಸಿ. |
+| `use_absolute_links`| ಇಲ್ಲ | `true` | ರಚಿಸಲಾದ ಭಾಷೆಯ ಮೆನುಗಳಲ್ಲಿ ಸಂಪೂರ್ಣ GitHub URL ಗಳ ಬದಲಿಗೆ ಸಾಪೇಕ್ಷ ಲಿಂಕ್‌ಗಳನ್ನು ಬಳಸಲು `false` ಎಂದು ಹೊಂದಿಸಿ. |
 | `menu_style` | ಇಲ್ಲ | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | ಹೊಸ ಭಾಷಾ ಮೆನುವನ್ನು ರಚಿಸುವಾಗ AI ಬಳಸುವ ಉಲ್ಲೇಖಿತ (reference) ಶೈಲಿ. |
 | `commit_message` | ಇಲ್ಲ | `docs: auto-translate README via Gemini` | git ಕಮಿಟ್ ಸಂದೇಶಕ್ಕಾಗಿ ಬಳಸುವ ಪಠ್ಯ. |
 | `model` | ಇಲ್ಲ | `gemini-3.1-pro-preview` | ಬಳಸಬೇಕಾದ Gemini ಮಾಡೆಲ್. |

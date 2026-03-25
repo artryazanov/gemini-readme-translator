@@ -36,6 +36,20 @@ def main():
     menu_style = os.environ.get("INPUT_MENU_STYLE", "> 🌐 **Languages:** [English](README.md) | [Русский](README.ru.md) | [中文](README.zh-CN.md)")
     output_dir = os.environ.get("INPUT_OUTPUT_DIR", "").strip()
 
+    use_absolute_links = os.environ.get("INPUT_USE_ABSOLUTE_LINKS", "true").lower() == "true"
+    github_repo = os.environ.get("GITHUB_REPOSITORY", "")
+    github_ref = os.environ.get("GITHUB_REF_NAME", "main")
+    github_server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
+
+    def build_link(filepath, target_dir=None):
+        filepath_url = filepath.replace("\\", "/") 
+        if use_absolute_links and github_repo:
+            return f"{github_server}/{github_repo}/blob/{github_ref}/{filepath_url}"
+        else:
+            if not target_dir:
+                return filepath_url
+            return os.path.relpath(filepath, target_dir).replace("\\", "/")
+
     target_langs = [lang.strip() for lang in languages_input.split(",") if lang.strip()]
     if not target_langs:
         print("Error: No target languages specified.")
@@ -75,9 +89,9 @@ def main():
 
     # 1. Handle Language Menu Generation (if enabled)
     if add_language_menu:
-        required_links_text = f"English -> {source_file}\n"
+        required_links_text = f"English -> {build_link(source_file)}\n"
         for lang in target_langs:
-            required_links_text += f"{lang} -> {target_files[lang]}\n"
+            required_links_text += f"{lang} -> {build_link(target_files[lang])}\n"
         
         print(f"Updating original {source_file} to ensure correct language menu...")
         prompt_original = f"""
@@ -126,20 +140,15 @@ def main():
         print(f"Translating to {lang} -> {target_file}...")
 
         if add_language_menu:
-            # Calculate relative path from target file's directory
             target_dir = os.path.dirname(target_file)
             
-            def get_rel_path(filepath):
-                if not target_dir:
-                    return filepath
-                return os.path.relpath(filepath, target_dir)
-            
-            links_text = f"English -> {get_rel_path(source_file)}\n"
+            links_text = f"English -> {build_link(source_file, target_dir)}\n"
             for t_lang in target_langs:
-                links_text += f"        {t_lang} -> {get_rel_path(target_files[t_lang])}\n"
+                links_text += f"        {t_lang} -> {build_link(target_files[t_lang], target_dir)}\n"
             
-            menu_rule = f"""1. Find the language navigation menu. You MUST update its links to be relative to this translated file's directory.
-        Use EXACTLY these relative links in the menu:
+            link_type = "absolute URLs" if use_absolute_links else "relative links"
+            menu_rule = f"""1. Find the language navigation menu. You MUST update its links.
+        Use EXACTLY these {link_type} in the menu:
         {links_text}        Keep the menu structure and language names exactly as they appear in the original text. Do not translate the language names in the menu."""
         else:
             menu_rule = "1. Do not generate or add any language navigation menus."

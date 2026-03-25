@@ -69,6 +69,7 @@ jobs:
 | `languages` | はい |  | カンマ区切りのターゲット言語（例：`ru, es`）。 |
 | `output_dir` | いいえ | | 翻訳されたファイルを保存するディレクトリ。デフォルトはソースファイルのディレクトリです。 |
 | `add_language_menu` | いいえ | `true` | 言語メニューの自動生成を無効にする場合は `false` に設定します。 |
+| `use_absolute_links`| いいえ | `true` | 生成された言語メニューで絶対的な GitHub URL の代わりに相対リンクを使用するには、`false` に設定します。 |
 | `menu_style` | いいえ | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | 新しい言語メニューを生成する際にAIが使用する参照スタイル。 |
 | `commit_message` | いいえ | `docs: auto-translate README via Gemini` | gitコミットメッセージに使用されるテキスト。 |
 | `model` | いいえ | `gemini-3.1-pro-preview` | 使用するGeminiモデル。 |

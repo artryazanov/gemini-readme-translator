@@ -69,6 +69,7 @@ jobs:
 | `languages` | Ya |  | Bahasa target yang dipisahkan koma (contoh: `ru, es`). |
 | `output_dir` | Tidak | | Direktori untuk menyimpan file yang diterjemahkan. Secara default menggunakan direktori file sumber. |
 | `add_language_menu` | Tidak | `true` | Setel ke `false` untuk menonaktifkan pembuatan otomatis menu bahasa. |
+| `use_absolute_links`| Tidak | `true` | Atur ke `false` untuk menggunakan tautan relatif alih-alih URL GitHub absolut di menu bahasa yang dihasilkan. |
 | `menu_style` | Tidak | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Gaya referensi yang digunakan AI saat membuat menu bahasa baru. |
 | `commit_message` | Tidak | `docs: auto-translate README via Gemini` | Teks yang digunakan untuk pesan git commit. |
 | `model` | Tidak | `gemini-3.1-pro-preview` | Model Gemini yang akan digunakan. |

@@ -69,6 +69,7 @@ jobs:
 | `languages` | Oui |  | Langues cibles séparées par des virgules (ex. `ru, es`). |
 | `output_dir` | Non | | Répertoire où enregistrer les fichiers traduits. Par défaut, il s'agit du répertoire du fichier source. |
 | `add_language_menu` | Non | `true` | Définissez sur `false` pour désactiver la génération automatique du menu des langues. |
+| `use_absolute_links`| Non | `true` | Définissez sur `false` pour utiliser des liens relatifs au lieu d'URL absolues GitHub dans les menus de langue générés. |
 | `menu_style` | Non | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Le style de référence que l'IA utilise lors de la génération d'un nouveau menu des langues. |
 | `commit_message` | Non | `docs: auto-translate README via Gemini` | Texte utilisé pour le message de commit git. |
 | `model` | Non | `gemini-3.1-pro-preview` | Le modèle Gemini à utiliser. |

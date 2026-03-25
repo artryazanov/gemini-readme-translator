@@ -69,6 +69,7 @@ jobs:
 | `languages` | होय |  | स्वल्पविरामाने (comma) वेगळ्या केलेल्या लक्षित भाषा (उदा. `ru, es`). |
 | `output_dir` | नाही | | भाषांतरित फाईल्स सेव्ह करण्यासाठी डिरेक्टरी. डीफॉल्टनुसार मूळ फाईलची डिरेक्टरी वापरली जाते. |
 | `add_language_menu` | नाही | `true` | भाषा मेनूचे आपोआप तयार होणे अक्षम (disable) करण्यासाठी `false` वर सेट करा. |
+| `use_absolute_links`| नाही | `true` | जनरेट केलेल्या भाषा मेनूमध्ये परिपूर्ण GitHub URLs ऐवजी संबंधित लिंक्स वापरण्यासाठी `false` वर सेट करा. |
 | `menu_style` | नाही | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | नवीन भाषा मेनू तयार करताना AI वापरत असलेली संदर्भ स्टाईल. |
 | `commit_message` | नाही | `docs: auto-translate README via Gemini` | गिट कमिट (git commit) संदेशासाठी वापरलेला मजकूर. |
 | `model` | नाही | `gemini-3.1-pro-preview` | वापरण्यासाठीचे Gemini मॉडेल. |

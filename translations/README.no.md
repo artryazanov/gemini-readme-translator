@@ -69,6 +69,7 @@ jobs:
 | `languages` | Ja |  | Kommaseparerte målspråk (f.eks. `ru, es`). |
 | `output_dir` | Nei | | Mappe for å lagre oversatte filer. Standard er kildefilens mappe. |
 | `add_language_menu` | Nei | `true` | Sett til `false` for å deaktivere automatisk generering av språkmeny. |
+| `use_absolute_links`| Nei | `true` | Sett til `false` for å bruke relative lenker i stedet for absolutte GitHub-URL-er i de genererte språkmenyene. |
 | `menu_style` | Nei | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Referansestilen KI-en bruker ved generering av en ny språkmeny. |
 | `commit_message` | Nei | `docs: auto-translate README via Gemini` | Tekst som brukes til git commit-meldingen. |
 | `model` | Nei | `gemini-3.1-pro-preview` | Gemini-modellen som skal brukes. |

@@ -69,6 +69,7 @@ jobs:
 | `languages` | Evet |  | Virgülle ayrılmış hedef diller (ör. `ru, es`). |
 | `output_dir` | Hayır | | Çevrilen dosyaların kaydedileceği dizin. Varsayılan olarak kaynak dosyanın dizinidir. |
 | `add_language_menu` | Hayır | `true` | Dil menüsünün otomatik olarak oluşturulmasını devre dışı bırakmak için `false` olarak ayarlayın. |
+| `use_absolute_links`| Hayır | `true` | Oluşturulan dil menülerinde mutlak GitHub URL'leri yerine göreli bağlantılar kullanmak için `false` olarak ayarlayın. |
 | `menu_style` | Hayır | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Yeni bir dil menüsü oluştururken yapay zekanın kullanacağı referans stili. |
 | `commit_message` | Hayır | `docs: auto-translate README via Gemini` | Git commit mesajı için kullanılan metin. |
 | `model` | Hayır | `gemini-3.1-pro-preview` | Kullanılacak Gemini modeli. |

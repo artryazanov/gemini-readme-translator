@@ -69,6 +69,7 @@ jobs:
 | `languages` | Kyllä |  | Pilkuilla erotetut kohdekielet (esim. `ru, es`). |
 | `output_dir` | Ei | | Hakemisto käännettyjen tiedostojen tallentamiseen. Oletuksena lähdetiedoston hakemisto. |
 | `add_language_menu` | Ei | `true` | Aseta arvoon `false` poistaaksesi kielivalikon automaattisen luonnin käytöstä. |
+| `use_absolute_links`| Ei | `true` | Aseta `false` käyttääksesi suhteellisia linkkejä absoluuttisten GitHub-URL-osoitteiden sijaan luoduissa kielivalikoissa. |
 | `menu_style` | Ei | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Viitetyyli, jota tekoäly käyttää luodessaan uutta kielivalikkoa. |
 | `commit_message` | Ei | `docs: auto-translate README via Gemini` | Git-vahvistusviestissä (commit) käytettävä teksti. |
 | `model` | Ei | `gemini-3.1-pro-preview` | Käytettävä Gemini-malli. |

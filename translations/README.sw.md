@@ -69,6 +69,7 @@ jobs:
 | `languages` | Ndiyo |  | Lugha lengwa zilizotenganishwa na koma (mf. `ru, es`). |
 | `output_dir` | Hapana | | Folda ya kuhifadhi faili zilizotafsiriwa. Chaguo-msingi ni folda ya faili asili. |
 | `add_language_menu` | Hapana | `true` | Weka `false` ili kuzuia utengenezaji kiotomatiki wa menyu ya lugha. |
+| `use_absolute_links`| Hapana | `true` | Weka iwe `false` ili utumie viungo vya karibu badala ya URL kamili za GitHub kwenye menyu za lugha zilizoundwa. |
 | `menu_style` | Hapana | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Mtindo wa rejea ambao AI hutumia inapotengeneza menyu mpya ya lugha. |
 | `commit_message` | Hapana | `docs: auto-translate README via Gemini` | Maandishi yanayotumiwa kwa ujumbe wa git commit. |
 | `model` | Hapana | `gemini-3.1-pro-preview` | Muundo wa Gemini utakaotumika. |

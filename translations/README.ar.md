@@ -69,6 +69,7 @@ jobs:
 | `languages` | نعم |  | اللغات المستهدفة مفصولة بفواصل (مثل `ru, es`). |
 | `output_dir` | لا | | الدليل لحفظ الملفات المترجمة. الافتراضي هو دليل الملف المصدر. |
 | `add_language_menu` | لا | `true` | عيّن إلى `false` لتعطيل الإنشاء التلقائي لقائمة اللغات. |
+| `use_absolute_links`| لا | `true` | عيّنه إلى `false` لاستخدام روابط نسبية بدلاً من عناوين GitHub المطلقة في قوائم اللغات المُنشأة. |
 | `menu_style` | لا | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | النمط المرجعي الذي يستخدمه الذكاء الاصطناعي عند إنشاء قائمة لغات جديدة. |
 | `commit_message` | لا | `docs: auto-translate README via Gemini` | النص المستخدم لرسالة التنفيذ (commit) في git. |
 | `model` | لا | `gemini-3.1-pro-preview` | نموذج Gemini المراد استخدامه. |

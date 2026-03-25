@@ -69,6 +69,7 @@ jobs:
 | `languages` | Igen |  | Vesszővel elválasztott célnyelvek (pl. `ru, es`). |
 | `output_dir` | Nem | | Könyvtár a lefordított fájlok mentéséhez. Alapértelmezés szerint a forrásfájl könyvtára. |
 | `add_language_menu` | Nem | `true` | Állítsd `false`-ra a nyelvi menü automatikus generálásának letiltásához. |
+| `use_absolute_links`| Nem | `true` | Állítsa `false` értékre a relatív hivatkozások használatához a generált nyelvi menükben a teljes GitHub URL-ek helyett. |
 | `menu_style` | Nem | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | A referenciastílus, amelyet az MI használ az új nyelvi menü generálásakor. |
 | `commit_message` | Nem | `docs: auto-translate README via Gemini` | A git commit üzenethez használt szöveg. |
 | `model` | Nem | `gemini-3.1-pro-preview` | A használni kívánt Gemini modell. |

@@ -69,6 +69,7 @@ jobs:
 | `languages` | Taip |  | Kableliais atskirtos tikslinės kalbos (pvz., `ru, es`). |
 | `output_dir` | Ne | | Katalogas, kuriame bus išsaugoti išversti failai. Numatytasis yra šaltinio failo katalogas. |
 | `add_language_menu` | Ne | `true` | Nustatykite `false`, jei norite išjungti automatinį kalbų meniu generavimą. |
+| `use_absolute_links`| Ne | `true` | Nustatykite kaip `false`, jei norite naudoti santykines nuorodas, o ne absoliučius „GitHub“ URL adresus sugeneruotuose kalbų meniu. |
 | `menu_style` | Ne | `> 🌐 **Languages:** [English](README.md) \| [Русский](README.ru.md)` | Etaloninis stilius, kurį DI naudoja generuodamas naują kalbų meniu. |
 | `commit_message` | Ne | `docs: auto-translate README via Gemini` | Tekstas, naudojamas „git commit“ žinutėje. |
 | `model` | Ne | `gemini-3.1-pro-preview` | Naudojamas „Gemini“ modelis. |
